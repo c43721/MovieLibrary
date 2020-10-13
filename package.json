@@ -2,7 +2,7 @@
   "name": "movielibraryapp",
   "version": "1.0.0",
   "description": "A website dedicated to teaching us the foundations of node.js, express, and npm.",
-  "main": "server/server.js",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon ."
   },
