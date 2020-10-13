@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "The Departed",
+    "director": "Martin Scorsese",
+    "genre": "Drama"
+  },
+  {
+    "id": 2,
+    "title": "The Dark Knight",
+    "director": "Drama",
+    "genre": "Christopher Nolan"
+  },
+  {
+    "id": 3,
+    "title": "Inception",
+    "director": "Christopher Nolan",
+    "genre": "Drama"
+  },
+  {
+    "id": 4,
+    "title": "Pineapple Express",
+    "director": "David Gordon Green",
+    "genre": "Comedy"
+  },
+  {
+    "id": 5,
+    "title": "Die Hard",
+    "director": "John McTiernan",
+    "genre": "Action"
+  }
+]
