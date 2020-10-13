@@ -1,0 +1,26 @@
+{
+  "name": "movielibraryapp",
+  "version": "1.0.0",
+  "description": "A website dedicated to teaching us the foundations of node.js, express, and npm.",
+  "main": "server/server.js",
+  "scripts": {
+    "dev": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c43721/MovieLibrary.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/c43721/MovieLibrary/issues"
+  },
+  "homepage": "https://github.com/c43721/MovieLibrary#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.5"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
