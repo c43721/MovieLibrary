@@ -2,6 +2,8 @@ const express = require("express");
 const db = require("./db/repository-wrapper");
 const cors = require("cors");
 
+const updateRoute = require("./routes/UpdateMovie");
+
 const app = express();
 
 const port = process.env.PORT || 3006;
@@ -12,6 +14,4 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-    res.send("Hello");
-})
+app.use("/api/update/", updateRoute);
