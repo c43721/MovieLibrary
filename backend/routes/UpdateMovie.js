@@ -12,11 +12,11 @@ router.put("/:movieid", (req, res) => {
         const updatedItems = req.body;
 
         if (!Object.keys(updatedItems).length) res.status(400).json({ success: "false", error: "No items to update." });
-        else if (JSON.stringify(movieFromSearch) === JSON.stringify(updatedItems)) res.status(200).json({ success: "true", status: "Not modified." });
+        else if (JSON.stringify(movieFromSearch) === JSON.stringify(updatedItems)) res.status(200).json({ success: "true", status: "Not modified" });
         else {
             const updatedMovie = db.movies.updateMovie(updatedItems);
 
-            res.status(200).json({ success: "true", movie: updatedMovie });
+            res.status(200).json({ success: "true", status: "Updated", movie: updatedMovie });
         }
     }
 })
