@@ -8,8 +8,8 @@
   {
     "id": 2,
     "title": "The Dark Knight",
-    "director": "Drama",
-    "genre": "Christopher Nolan"
+    "director": "Christopher Nolan",
+    "genre": "Drama"
   },
   {
     "id": 3,
