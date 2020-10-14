@@ -1,0 +1,48 @@
+/api 
+Router for everything relating to this API
+
+try to use express routers (https://expressjs.com/en/guide/routing.html)
+before, 
+try to make it in the index.js file
+
+going above and beyond:
+return status codes
+https://www.restapitutorial.com/httpstatuscodes.html
+
+---------------------------------------------
+/api/update/:movieid me
+PUT
+
+updating a specific movie entry
+return 404 if its not found
+
+
+---------------------------------------------
+/api/movies/ ramon
+GET
+
+returns every single movie (array of movie objects)
+
+
+---------------------------------------------
+/api/movies/:movieid ramon
+GET
+
+return details about a specific movie
+
+---------------------------------------------
+/api/add/ sophia
+POST
+
+body: 
+id
+title
+director
+genre
+src - optional
+
+adding a new movie to the "database"
+this should validate the user input
+returns a 400 if input is invalid
+
+---------------------------------------------
