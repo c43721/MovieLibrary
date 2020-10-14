@@ -3,6 +3,7 @@ const db = require("./db/repository-wrapper");
 const cors = require("cors");
 
 const updateRoute = require("./routes/UpdateMovie");
+const createRoute = require("./routes/CreateMovie");
 
 const app = express();
 
@@ -15,3 +16,5 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/update/", updateRoute);
+
+app.post("/api/create", createRoute);
