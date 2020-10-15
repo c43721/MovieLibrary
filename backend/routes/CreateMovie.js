@@ -11,7 +11,7 @@ router.post("/api/create", (req, res) => {
         genre: "";
       }
     console.log("testing post!!!!", req.body)
-    res.send("Hello World!!!")
+    res.send(newMovie)
    // res.json("ANOTHER TEST")
 
 

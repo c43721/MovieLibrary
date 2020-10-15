@@ -6,7 +6,7 @@ const updateRoute = require("./routes/UpdateMovie");
 const createRoute = require("./routes/CreateMovie");
 
 const app = express();
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 
 const port = process.env.PORT || 3006;
 
@@ -18,15 +18,14 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/update/", updateRoute);
 
-// app.use("/api/create", createRoute);
-// app.use(bodyParser());
+app.use("/api/create", createRoute);
 
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.get('/api/create', function (req, res, next) {
+    console.log(req.body)
+    res.json(req.body)
+  })
 
-app.post("/api/create",(req,res)=>{
-    let newMovie = req.body;
-    let addedMovie = repoContext.newMovie.create(newMovie);
-    res.send(addedMovie);
-    console.log("testing")
-});
+app.post('/api/create', function (req, res, next) {
+    console.log(req.body)
+    res.json(req.body)
+  })
