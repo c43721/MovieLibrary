@@ -3,18 +3,19 @@ const db = require('../db/repository-wrapper');
 
 const router = express.Router();
 
-router.post("/", (req, res, next) => {
-    console.log("testing post!!!!")
-    next()
-});
+router.post("/api/create", (req, res) => {
+    const newMovie = req.body;
+    {
+        title: "";
+        director: "";
+        genre: "";
+      }
+    console.log("testing post!!!!", req.body)
+    res.send("Hello World!!!")
+   // res.json("ANOTHER TEST")
 
-    // const newMovie
-    // {
-    //     title: "";
-    //     director: "";
-    //     genre: "";
-    //   }
 
+    });
 // {
 //     const idToAdd = req.params.newMovieId;
 
