@@ -17,4 +17,4 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/update/", updateRoute);
 
-app.post("/api/create", createRoute);
+app.use("/api/create", createRoute);
