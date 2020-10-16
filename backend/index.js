@@ -4,9 +4,10 @@ const cors = require("cors");
 
 const updateRoute = require("./routes/UpdateMovie");
 const createRoute = require("./routes/CreateMovie");
+const { movies } = require("./db/json-context");
+const { createMovie } = require("./db/movies-repository");
 
 const app = express();
-const bodyParser = require("body-parser");
 
 const port = process.env.PORT || 3006;
 
@@ -20,12 +21,12 @@ app.use("/api/update/", updateRoute);
 
 app.use("/api/create", createRoute);
 
-app.get('/api/create', function (req, res, next) {
-    console.log(req.body)
-    res.json(req.body)
-  })
+app.get("/api/create/new",(req,res)=>{  
+  res.send("hello");
+});
 
-app.post('/api/create', function (req, res, next) {
-    console.log(req.body)
-    res.json(req.body)
-  })
+  app.post("/api/create/new", (req,res) => {
+    let newMovie = req.body;
+    let addedMovie = db.movies.createMovie(newMovie);
+    res.send(addedMovie);
+  });
