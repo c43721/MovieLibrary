@@ -25,6 +25,7 @@ app.get("/api/movies",(req,res) =>{
 });
 app.get("/api/movies/:id",(req,res)=>{
     let id = req.params.id;
-    let port = db.movies.findAllMovies();
-    res.send(port);
+    let movieFromid = db.movies.findMoviesById(id);
+    if(!movieFromId) res.status(401).json({ message :"Cannot find movie." });
+    else res.json(movieFromid);
 });
