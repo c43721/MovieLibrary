@@ -22,11 +22,16 @@ function updateSpecificMovie(id, data) {
         url: baseApiUrl + "/update/" + id,
         contentType: 'application/json',
         data: JSON.stringify(data),
-        success: function(data) {
+        success: function (data) {
             //Do something to modify the frontend
             console.log(data);
         }
     })
 }
 
-updateSpecificMovie(1, {title: "test 1"})
+// updateSpecificMovie(1, {
+//     "id": 1,
+//     "title": "The Departed 2",
+//     "director": "Martin Scorsese",
+//     "genre": "Drama"
+// })
