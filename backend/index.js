@@ -1,4 +1,3 @@
-
 const express = require("express");
 const db = require("./db/repository-wrapper");
 const cors = require("cors");
@@ -24,8 +23,8 @@ app.get("/api/movies", (req, res) => {
 
 app.get("/api/movies/:id", (req, res) => {
     let id = req.params.id;
-    let movieFromid = db.movies.findMoviesById(id);
-    if (!movieFromId) res.status(401).json({ message: "Cannot find movie." });
+    let movieFromid = db.movies.findMovieById(id);
+    if (!movieFromid) res.status(401).json({ message: "Cannot find movie." });
     else res.json(movieFromid);
 });
 
