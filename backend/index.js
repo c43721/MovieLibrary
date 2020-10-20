@@ -33,38 +33,3 @@ app.get("/api/create/new",(req,res)=>{
     res.send(addedMovie);
   }); 
 
-
-
-
-  btn1.addEventListener("click", function () {
-    var xhr = new XMLHttpRequest();
-    xhr.open('Post', "http://localhost:3006/api/create/new");
-    xhr.onload = function () {
-        var data = JSON.parse(xhr.responseText);
-        addMovie(data);
-        console.log(data.title)
-    };
-    xhr.send();
-});
-
-function addMovie() {
-    $.ajax({
-        url: "http://localhost:3006/api/create/new",
-        dataType: "json",
-        type: "post",
-        success: function (data, textStatus, jQxhr) {
-            console.log(data);
-            for (var i = 0; i < data.length; i++) {
-                $("#title").append(
-                    "<tr>" + "<td>" + data[i].title + "</tr>");
-                $("#director").append(
-                      "<tr>" + "<td>" + data[i].director + "</tr>");
-                $("#genre").append(
-                    "<tr>" + "<td>" + data[i].genre + "</tr>");
-            }
-        },
-        error: function (jQxhr, textStatus, errorThrown) {
-            console.log(errorThrown);
-        },
-    });
-}
