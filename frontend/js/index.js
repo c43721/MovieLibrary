@@ -26,7 +26,29 @@ function getMovies() {
     })
 }
 
+function newMovieAdd() {
+    $.ajax({
+        type: "POST",
+        url: baseApiUrl + "/create/new",
+        contentType: 'application/json',
+        success: function (data) {
+            updateCards(data);
+        }
+    })
+}
+
 async function getSpecificMovie(id) {
+    const output = await $.ajax({
+        type: "GET",
+        url: baseApiUrl + "/movies/" + id,
+        contentType: 'application/json',
+    })
+    return output;
+}
+
+
+
+async function addNewMovie(id) {
     const output = await $.ajax({
         type: "GET",
         url: baseApiUrl + "/movies/" + id,
@@ -95,6 +117,7 @@ async function editMovie(id) {
         </div>
     </div>
     `).on("submit", async function (e) {
+        console.log("submitted");
         e.preventDefault();
 
         const editingId = movieFromDb.id;
@@ -110,11 +133,68 @@ async function editMovie(id) {
         })
 
         getMovies();
-
-        $(this).off();
     })
 
-    $('#editModal').modal().on("hidden.bs.modal", function () {
-        $("#edit").empty().off();
-    });;
+    $('#editModal').modal();
+}
+
+async function addTheMovie(id) {
+const addToDB = await newMovieAdd(id);
+
+$("#create").empty().prepend(`
+<div class="modal fade" id="creatModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">${addToDB.title}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                <label for="id">ID</label>
+            </div>
+            <div class="form-group">
+                <label for="newTitle">Title</label>
+                <input type="text" class="form-control" id="newTitle" aria-describedby="movieName" placeholder="${addToDB.title}">
+            </div>
+            <div class="form-group">
+                <label for="newDirector">Director</label>
+                <input type="text" class="form-control" id="newDirector" aria-describedby="emailHelp" placeholder="${addToDB.director}">
+            </div>
+            <div class="form-group">
+                <label for="newGenre">Genre</label>
+                <input type="text" class="form-control" id="newGenre" aria-describedby="emailHelp" placeholder="${addToDB.genre}">
+            </div>
+            <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
+        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div> 
+    </div>
+</div>
+`).on("submit", async function (e) {
+    console.log("submitted");
+    e.preventDefault();
+
+    const creatingID = addToDB.id;
+    const newTitle = $("#newTitle").val() || addToDB.title;
+    const newDirector = $("#newDirector").val() || addToDB.director;
+    const newGenre = $("#newGenre").val() || addToDB.genre;
+
+    await updateSpecificMovie(id, {
+        id: creatingID,
+        title: newTitle,
+        director: newDirector,
+        genre: newGenre
+    })
+
+    getMovies();
+})
+
+$('#createModal').modal();
 }
