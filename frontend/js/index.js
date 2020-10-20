@@ -97,15 +97,15 @@ async function editMovie(id) {
                 </div>
                 <div class="form-group">
                     <label for="newMovieName">Name</label>
-                    <input type="text" class="form-control" id="newMovieName" aria-describedby="movieName" placeholder="${movieFromDb.title}">
+                    <input type="text" class="form-control" id="newMovieName" aria-describedby="movieTitle" placeholder="${movieFromDb.title}">
                 </div>
                 <div class="form-group">
                     <label for="newMovieDirector">Director</label>
-                    <input type="text" class="form-control" id="newMovieDirector" aria-describedby="emailHelp" placeholder="${movieFromDb.director}">
+                    <input type="text" class="form-control" id="newMovieDirector" aria-describedby="movieDirector" placeholder="${movieFromDb.director}">
                 </div>
                 <div class="form-group">
                     <label for="newMovieGenre">Genre</label>
-                    <input type="text" class="form-control" id="newMovieGenre" aria-describedby="emailHelp" placeholder="${movieFromDb.genre}">
+                    <input type="text" class="form-control" id="newMovieGenre" aria-describedby="movieGenre" placeholder="${movieFromDb.genre}">
                 </div>
                 <button type="submit" class="btn btn-primary">Edit</button>
                 </form>
