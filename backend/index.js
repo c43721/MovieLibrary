@@ -1,3 +1,4 @@
+
 const express = require("express");
 const db = require("./db/repository-wrapper");
 const cors = require("cors");
@@ -18,3 +19,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/update/", updateRoute);
 
 app.post("/api/create", createRoute);
+app.get("/api/movies",(req,res) =>{
+    let port = db.movies.findAllMovies();
+    res.send(port);
+});
+app.get("/api/movies/:id",(req,res)=>{
+    let id = req.params.id;
+    let movieFromid = db.movies.findMoviesById(id);
+    if(!movieFromId) res.status(401).json({ message :"Cannot find movie." });
+    else res.json(movieFromid);
+});
