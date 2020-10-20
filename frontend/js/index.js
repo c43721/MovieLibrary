@@ -114,9 +114,7 @@ async function editMovie(id) {
         $(this).off();
     })
 
-    $('#editModal').modal();
+    $('#editModal').modal().on("hidden.bs.modal", function () {
+        $("#edit").empty().off();
+    });;
 }
-
-$("#editModal").on("hidden.bs.modal", function () {
-    $("#edit").empty()
-});
