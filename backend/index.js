@@ -18,7 +18,7 @@ app.use("/api/update/", updateRoute);
 
 app.get("/api/movies", (req, res) => {
     let port = db.movies.findAllMovies();
-    res.send(port);
+    res.json(port);
 });
 
 app.get("/api/movies/:id", (req, res) => {
@@ -31,5 +31,5 @@ app.get("/api/movies/:id", (req, res) => {
 app.post("/api/create/new", (req, res) => {
     let newMovie = req.body;
     let addedMovie = db.movies.createMovie(newMovie);
-    res.send(addedMovie);
+    res.json(addedMovie);
 });
