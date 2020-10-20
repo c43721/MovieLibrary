@@ -95,7 +95,6 @@ async function editMovie(id) {
         </div>
     </div>
     `).on("submit", async function (e) {
-        console.log("submitted");
         e.preventDefault();
 
         const editingId = movieFromDb.id;
@@ -111,7 +110,13 @@ async function editMovie(id) {
         })
 
         getMovies();
+
+        $(this).off();
     })
 
     $('#editModal').modal();
 }
+
+$("#editModal").on("hidden.bs.modal", function () {
+    $("#edit").empty()
+});
