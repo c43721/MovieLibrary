@@ -2,7 +2,6 @@
 
 //have constants for maybe base api url, and a local movie array to be overridden.
 const baseApiUrl = "http://localhost:3006/api";
-// let movieDataFromApi = [];
 
 //use AJAX to get all the movies, on page load
 //Loop through each of those movies, and make a new "card" for each movie in the list. Each card should be tailored to show the movie details.
@@ -27,6 +26,37 @@ function updateSpecificMovie(id, data) {
             console.log(data);
         }
     })
+}
+
+function getMovies() {
+    $.ajax({
+        type: "GEt",
+        url: baseApiUrl + "/movies",
+        contentType: 'application/json',
+        success: function (data) {
+            console.log(data);
+            updateCards(data);
+        }
+    })
+}
+
+getMovies();
+
+function updateCards(movieArray) {
+    const container = $("#cards-container");
+    container.empty();
+
+    for (let movie of movieArray) {
+        container.append(`
+            <div class="card" style="width: 18rem; height: 18rem;" id=${movie.id}>
+            <div class="card-body">
+                <h5 class="card-title">${movie.title}</h5>
+                    <p class="card-text">Director: ${movie.director}</p>
+                    <p class="card-text">Genre: ${movie.genre}</p>
+                </div>
+            </div>
+        `);
+    }
 }
 
 // updateSpecificMovie(1, {
