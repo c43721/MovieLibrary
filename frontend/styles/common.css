@@ -1,7 +1,14 @@
 body {
     background-color: #a5a5a5;
 }
+
 #cards-container {
     margin: 25px;
     gap: 20px;
+}
+
+.edit {
+    padding: 15px;
+    width: 50vw;
+    margin: 0 auto;
 }
