@@ -25,7 +25,7 @@ router1.post("/api/create/new", (req, res) => {
           }
       }
     console.log(newMovie, "testing post!!!!")
-   res.send(newMovie)
+    res.send(newMovie)
 
     });
 
