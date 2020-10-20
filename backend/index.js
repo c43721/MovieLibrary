@@ -25,8 +25,8 @@ app.get("/api/create/new",(req,res)=>{
   res.send("hello");
 });
 
-  app.post("/api/create/new", (req,res) => {
+ app.post("/api/create/new", (req,res) => {
     let newMovie = req.body;
     let addedMovie = db.movies.createMovie(newMovie);
-    res.send(addedMovie, "app.post");
-  });
+    res.send(addedMovie);
+  }); 
