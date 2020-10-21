@@ -17,6 +17,8 @@
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
         crossorigin="anonymous"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+
     <link rel="stylesheet" href="./styles/common.css">
 </head>
 
@@ -73,6 +75,15 @@
             </div>
         </div>
     </div>
+
+    <div class="search-box">
+        <label for="searchString" class="string">Fuzzy Search</label>
+        <input type="text" class="form-control" id="searchString" aria-describedby="movieDirector"
+            placeholder="Type in whatever you want, and it will search for movie titles, directors and genres">
+        <button type="button" class="btn btn-secondary" id="searchForString" onclick="handleSearch()">Search!</button>
+    </div>
+
+    <div class="d-flex justify-content-center align-content-center flex-wrap" id="searchResults"></div>
 
     <!-- Put our local JS file at end so then the document loads first before the JS, so we don't need to listen to the document being ready -->
     <script src="js/index.js"></script>

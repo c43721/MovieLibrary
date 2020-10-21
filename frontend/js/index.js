@@ -26,6 +26,14 @@ function getMovies() {
     })
 }
 
+async function getMovieArray() {
+    return await $.ajax({
+        type: "GET",
+        url: baseApiUrl + "/movies",
+        contentType: 'application/json',
+    })
+}
+
 function newMovieAdd(data) {
     $.ajax({
         type: "POST",
@@ -48,8 +56,8 @@ async function getSpecificMovie(id) {
 }
 
 
-function updateCards(movieArray) {
-    const container = $("#cards-container");
+function updateCards(movieArray, containerName = "#cards-container") {
+    const container = $(containerName);
     container.empty();
 
     for (let movie of movieArray) {
@@ -155,3 +163,29 @@ $("#createMovie").on("click", function (e) {
         genre
     })
 })
+
+async function searchForMovies(searchString) {
+    const movieArray = await getMovieArray();
+
+    const options = {
+        shouldSort: true,
+        threshold: 0.3,
+        keys: [
+            "title",
+            "genre",
+            "director"
+        ]
+    };
+
+    const fuse = new Fuse(movieArray, options);
+
+    return fuse.search(searchString);
+}
+
+async function handleSearch() {
+    const searchValue = $("#searchString").val();
+    if (!searchValue) return;
+
+    const array = await searchForMovies(searchValue);
+    updateCards(array.map(result => result.item), "#searchResults");
+}
