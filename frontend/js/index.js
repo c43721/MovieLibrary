@@ -55,6 +55,7 @@ function updateCards(movieArray) {
     for (let movie of movieArray) {
         container.append(`
             <div class="card" style="width: 18rem; height: 18rem;" id=${movie.id}>
+            ${movie.img ? `<img class="card-img-top" src=${movie.img} style="height:6rem;" alt="Movie Poster">` : ""}
             <div class="card-body">
                 <h5 class="card-title">${movie.title}</h5>
                     <p class="card-text">Director: ${movie.director}</p>
@@ -97,6 +98,10 @@ async function editMovie(id) {
                     <label for="newMovieGenre">Genre</label>
                     <input type="text" class="form-control" id="newMovieGenre" aria-describedby="movieGenre" placeholder="${movieFromDb.genre}">
                 </div>
+                <div class="form-group">
+                        <label for="movieImageLink">Link to Image</label>
+                        <input type="text" class="form-control" id="movieImageLink" aria-describedby="movieImageLink" ${movieFromDb.img ? `value="${movieFromDb.img}"` : ""} placeholder="Not Set">
+                </div>
                 <button type="submit" class="btn btn-primary">Edit</button>
                 </form>
             </div>
@@ -113,12 +118,14 @@ async function editMovie(id) {
         const newTitle = $("#newMovieName").val() || movieFromDb.title;
         const newDirector = $("#newMovieDirector").val() || movieFromDb.director;
         const newGenre = $("#newMovieGenre").val() || movieFromDb.genre;
+        const newImg = $("#movieImageLink").val() || undefined;
 
         await updateSpecificMovie(id, {
             id: editingId,
             title: newTitle,
             director: newDirector,
-            genre: newGenre
+            genre: newGenre,
+            img: newImg
         })
 
         getMovies();
@@ -137,10 +144,12 @@ $("#createMovie").on("click", function (e) {
     const title = $("#movieName").val();
     const director = $("#movieDirector").val();
     const genre = $("#movieGenre").val();
+    const img = $("#movieImageLink").val();
 
     if (!title || !director || !genre) return alert("You need to fill in all the fields!");
 
     newMovieAdd({
+        img,
         title,
         director,
         genre

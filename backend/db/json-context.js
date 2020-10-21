@@ -39,9 +39,7 @@ function create(dataPath, data) {
   const newObjectId = Object.keys(jsonData).length + 1;
   newRecord = {
     id: newObjectId,
-    title: data.title,
-    director: data.director,
-    genre: data.genre,
+    ...data
   };
   jsonData[newObjectId - 1] = newRecord;
   writeFileSync(dataPath, jsonData);

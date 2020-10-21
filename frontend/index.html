@@ -47,17 +47,22 @@
                         <div class="form-group">
                             <label for="movieName">Name</label>
                             <input type="text" class="form-control" id="movieName" aria-describedby="movieTitle"
-                                placeholder="Scream">
+                                placeholder="Scream" required>
                         </div>
                         <div class="form-group">
                             <label for="movieDirector">Director</label>
                             <input type="text" class="form-control" id="movieDirector" aria-describedby="movieDirector"
-                                placeholder="Wes Craven">
+                                placeholder="Wes Craven" required>
                         </div>
                         <div class="form-group">
                             <label for="movieGenre">Genre</label>
                             <input type="text" class="form-control" id="movieGenre" aria-describedby="movieGenre"
                                 placeholder="Horror">
+                        </div>
+                        <div class="form-group">
+                            <label for="movieImageLink">Link to Image</label>
+                            <input type="text" class="form-control" id="movieImageLink" aria-describedby="movieImageLink"
+                                placeholder="https://www.google.com/images" required>
                         </div>
                         <button type="submit" class="btn btn-primary" id="createMovie">Create Movie</button>
                     </form>
