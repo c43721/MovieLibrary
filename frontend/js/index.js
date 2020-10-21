@@ -118,3 +118,7 @@ async function editMovie(id) {
         $("#edit").empty().off();
     });;
 }
+
+$("#createMovie").on("click", function (e) {
+    e.preventDefault();
+})
