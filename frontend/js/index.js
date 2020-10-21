@@ -33,7 +33,7 @@ function newMovieAdd(data) {
         contentType: 'application/json',
         data: JSON.stringify(data),
         success: function (data) {
-            updateCards(data);
+            getMovies();
         }
     })
 }
@@ -133,5 +133,16 @@ async function editMovie(id) {
 
 $("#createMovie").on("click", function (e) {
     e.preventDefault();
-    console.log("submitted form");
+
+    const title = $("#movieName").val();
+    const director = $("#movieDirector").val();
+    const genre = $("#movieGenre").val();
+
+    if (!title || !director || !genre) return alert("You need to fill in all the fields!");
+
+    newMovieAdd({
+        title,
+        director,
+        genre
+    })
 })
