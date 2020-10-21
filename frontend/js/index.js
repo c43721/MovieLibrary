@@ -26,6 +26,18 @@ function getMovies() {
     })
 }
 
+function newMovieAdd(data) {
+    $.ajax({
+        type: "POST",
+        url: baseApiUrl + "/create/new",
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function (data) {
+            updateCards(data);
+        }
+    })
+}
+
 async function getSpecificMovie(id) {
     const output = await $.ajax({
         type: "GET",
@@ -121,4 +133,5 @@ async function editMovie(id) {
 
 $("#createMovie").on("click", function (e) {
     e.preventDefault();
+    console.log("submitted form");
 })
