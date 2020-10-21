@@ -21,21 +21,16 @@
 </head>
 
 <body class="container-fluid">
+    <div class="text-center my-5">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addMovieModal">
+            Add Movie
+        </button>
+    </div>
 
-    <!-- header bar: needs to include the name of the project ("movaria?") and also a button to add a new movie -->
-    <!-- "main" section: this would be an empty div that will be filled up by jQuery, but it has to have an ID so we can access it in the JS file -->
 
-    <main class="d-flex justify-content-center align-content-center flex-wrap" id="cards-container">
+    <main class="d-flex justify-content-center align-content-center flex-wrap" id="cards-container"></main>
 
-    </main>
-
-    <section class="edit" id="edit">
-
-    </section>
-
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addMovieModal">
-        Add Movie
-    </button>
+    <section class="edit" id="edit"></section>
 
     <div class="modal fade" id="addMovieModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
